@@ -1,10 +1,10 @@
 # 作业二 Python变量和列表
 
-- 班级： 22物联1班
+- 班级： 22物联2班
 
-- 学号： 202202200000
+- 学号： B20220305223
 
-- 姓名： 张三
+- 姓名： 阳文萱
 
 ---
 
@@ -21,8 +21,13 @@
 ```python
 # 请在这里填写你的代码
 
-
-```
+def nearest_sq(n):
+    if n < 0:
+        return None
+    sqrt_n = int(n ** 0.5)
+    lower_sq = sqrt_n ** 2
+    upper_sq = (sqrt_n + 1) ** 2
+    return lower_sq if n - lower_sq <= upper_sq - n else upper_sq
 
 ## 第2题：偶数或者奇数（Even or Odd）
 
@@ -35,7 +40,11 @@
 ```python
 # 请在这里填写你的代码
 
-```
+def even_or_odd(number):
+    if number % 2 == 0:
+        return "Even"
+    else:
+        return "Odd"
 
 ## 第三题：括号匹配（Valid Braces）
 
@@ -61,4 +70,14 @@ python中没有内置堆栈数据结构，可以直接使用`list`来作为堆�
 ```python
 # 请在这里填写你的代码
 
-```
+def validBraces(string):
+    stack = []
+    braces_map = {')': '(', '}': '{', ']': '['}
+    for char in string:
+        if char in braces_map.values():
+            stack.append(char)
+        elif char in braces_map.keys():
+            if stack == [] or braces_map[char] != stack.pop():
+                return False
+    return stack == []
+
